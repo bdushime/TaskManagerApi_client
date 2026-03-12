@@ -5,7 +5,6 @@ export const processData = (rawUsers, rawTodos) => {
   const usersMap = new Map();
 
   rawUsers.forEach(rawUser => {
-    // Destructuring: extraction email and name from rawUser
     const { id, name, email } = rawUser; 
     usersMap.set(id, new User(id, name, email));
   });
