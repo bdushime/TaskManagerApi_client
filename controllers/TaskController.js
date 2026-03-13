@@ -6,15 +6,15 @@ export class TaskController {
         this.allTasks = users.flatMap(user =>user.tasks);
     }
 
-    handleSearch(Q){
+    handleSearch(query){
         console.log(`\n--- Searching for: "${query}---"`);
-        const results = processor.searchTasks(this.allTasks,Q);
+        const results = processor.searchTasks(this.allTasks,query);
 
         if(results.length === 0){
             console.log("No such tasks found ");
 
         } else {
-            results.forEach(task => console.log(`-[${task.getStatus()}] ${task.title}`));
+            results.forEach(task => console.log(` ${task.title} [${task.getStatus()}]`));
 
         }
     }
