@@ -42,4 +42,8 @@ export const groupByUser = (tasks)=>{
     return group;
 }
 
+export const searchTasks = (tasks,search)=>{
+ return tasks.filter(t=>t.title.toLowerCase().includes(search.toLowerCase()));
+}
+
 
