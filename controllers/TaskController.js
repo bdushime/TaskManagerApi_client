@@ -51,4 +51,22 @@ export class TaskController {
       );
     }
   }
+
+
+  showUserTasksByStatus(userId,status){
+    const user = this.users.find(u=>u.id === userId);
+    if(!user) return console.log("User not found");
+
+    const isCompleted = status === 'completed';
+    const filteredTasks = user.getTasksByStatus(isCompleted);
+
+    console.log(`\n=== ${status.toUpperCase()} TASKS FOR ${user.name.toUpperCase()}===`);
+    if(filteredTasks.length === 0){
+      console.log(`No ${status} tasks found`);
+    } else {
+      filteredTasks.forEach(t=>console.log(`-${t.title} is ${t.getStatus()}`));
+    }
+  }
+
+
 }

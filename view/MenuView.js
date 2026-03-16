@@ -18,11 +18,12 @@ export class MenuView {
         2. Search Tasks by Title
         3. View Unique Categories
         4. View User Dashboard
-        5. Exit
+        5. Filter User Tasks by Status
+        6. Exit
         =============================
         `);
 
-        this.rl.question('Choose an option (1-5): ', (choice) => {
+        this.rl.question('Choose an option (1-6): ', (choice) => {
             this.handleChoice(choice);
         });
     }
@@ -50,11 +51,20 @@ export class MenuView {
                 });
                 break;
             case '5':
-                console.log("Exiting... Happy coding!");
+                this.rl.question('Enter User ID: ', (id) => {
+                    this.rl.question('Filter by completed or pending :',(status)=>{
+                        this.controller.showUserTasksByStatus(Number(id),status.toLowerCase());
+                        this.display();
+                    })
+                  
+                });
+                break;    
+            case '6':
+                console.log("Exiting... ");
                 this.rl.close();
                 break;
             default:
-                console.log("Invalid option. Please try again.");
+                console.log("Invalid option, Please try again.");
                 this.display();
         }
     }
