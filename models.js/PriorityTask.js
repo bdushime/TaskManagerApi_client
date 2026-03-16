@@ -6,7 +6,11 @@ export class PriorityTask extends Task {
         this.dueDate = new Date(dueDate);
     }
 
-   
+    getStatus(){
+        const baseStatus = super.getStatus();
+        return `[${this.priority} Priority] ${baseStatus}`;
+    }
+
     isOverdue(){
         return !this.completed && new Date() > this.dueDate;
     }

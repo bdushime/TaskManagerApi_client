@@ -21,13 +21,13 @@ export const processData = (rawUsers, rawTodos) => {
 };
 
 
-export  const calculateGlobalStats = (users)=>{
-return users.reduce((acc,user)=>{
-    acc.totalTasks += user.tasks.length;
-    acc.totalCompleted += user.tasks.filter(t => t.completed).length;
-    return acc;
-},{totalTasks:0, totalCompleted:0});
-}
+export const calculateGlobalStats = (users) => {
+    return users.reduce((acc, user) => {
+        acc.totalTasks += user.tasks.length;
+        acc.totalCompleted += user.tasks.filter(t => t.completed).length;
+        return acc;
+    }, { totalTasks: 0, totalCompleted: 0 });
+};
 
 export const groupByUser = (tasks)=>{
     const group = new Map();
@@ -46,4 +46,14 @@ export const searchTasks = (tasks,search)=>{
  return tasks.filter(t=>t.title.toLowerCase().includes(search.toLowerCase()));
 }
 
+export const getUniqueCategories = (tasks) => {
+    const allCategories = tasks.map(t => t.title.split(' ')[0]);
+    const uniqueSet = new Set(allCategories);
+    return Array.from(uniqueSet);
+};
+
+export const filterByStatus = (tasks,status)=>{
+    const isCompleted = status === 'completed';
+    return tasks.filter(t =>t.completed === isCompleted);
+}
 
