@@ -20,4 +20,16 @@ export class User {
     getTasksByStatus(isCompleted){
       return this.tasks.filter(task=>task.completed === isCompleted);
     }
+
+    getCompletedTasks(){
+        if(this.tasks.length === 0)return 0;
+        const completedCount = this.tasks.filter(t =>t.completed).length;
+        return completedCount;
+    }
+
+    getIncompleteTasks(){
+        if(this.tasks.length === 0) return 0;
+        const incompleteCount = this.tasks.filter(t=>!t.completed).length;
+        return incompleteCount;
+    }
 }

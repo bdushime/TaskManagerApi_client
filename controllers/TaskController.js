@@ -30,8 +30,10 @@ export class TaskController {
 
     console.log(`\n===  USER DASHBOARD: ${user.name.toUpperCase()} ===`);
     console.log(`Email:       ${user.email}`);
+    console.log(`Completed: ${user.getCompletedTasks()} tasks`);
+    console.log(`Pending: ${user.getIncompleteTasks()} tasks`);
     console.log(`Completion:  ${user.getCompletionRate()}%`);
-    console.log(`Tasks Count: ${user.tasks.length}`);
+    console.log(`Tasks Count: ${user.tasks.length} tasks`);
     
     console.log(`\nRecent Tasks:`);
     user.tasks.slice(0, 5).forEach(t => {
@@ -51,7 +53,6 @@ export class TaskController {
       );
     }
   }
-
 
   showUserTasksByStatus(userId,status){
     const user = this.users.find(u=>u.id === userId);
@@ -84,6 +85,11 @@ export class TaskController {
   }
 
   toggleStatus(taskId){
+
+    if (isNaN(taskId)) {
+        return console.log("  Please enter a valid numeric ID");
+    }
+
     const task = this.allTasks.find(t=>t.id === taskId);
 
     if(!task){
