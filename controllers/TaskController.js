@@ -69,4 +69,32 @@ export class TaskController {
   }
 
 
+  showSortedTasks(){
+    const sorted = processor.sortTasksByTitle(this.allTasks);
+    console.log("\n=== ALL Tasks sorted ni ascending order");
+    sorted.slice(0,10).forEach(t=>console.log(`-${t.title}`));
+  }
+
+  showUserTaskDistributin(){
+    const groupMap = processor.groupTaskByUser(this.allTasks);
+    console.log("\n=== Task By User Id ===");
+    groupMap.forEach((tasks,userId)=>{
+      console.log(`User ID #${userId}: ${tasks.length} tasks assigned`);
+    })
+  }
+
+  toggleStatus(taskId){
+    const task = this.allTasks.find(t=>t.id === taskId);
+
+    if(!task){
+      return console.log(`Task with this ${taskId} not found`);
+    }
+    const oldStatus = task.getStatus();
+    task.toggle();
+    const newStatus = task.getStatus();
+
+    console.log(`Title: ${task.title}`);
+    console.log(`Status changed : from ${oldStatus} to ${newStatus}`)
+  }
+
 }

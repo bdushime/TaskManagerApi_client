@@ -19,11 +19,14 @@ export class MenuView {
         3. View Unique Categories
         4. View User Dashboard
         5. Filter User Tasks by Status
-        6. Exit
+        6. View All Tasks Sorted form A to Z
+        7. View Task By User
+        8. Toggle Task Status
+        9. Exit
         =============================
         `);
 
-        this.rl.question('Choose an option (1-6): ', (choice) => {
+        this.rl.question('Choose an option (1-9): ', (choice) => {
             this.handleChoice(choice);
         });
     }
@@ -58,8 +61,22 @@ export class MenuView {
                     })
                   
                 });
-                break;    
-            case '6':
+                break;
+              case '6':
+                 this.controller.showSortedTasks(true);
+                 this.display();
+                break;
+              case '7':
+                 this.controller.showUserTaskDistributin();
+                 this.display();
+                break;
+              case '8':
+                this.rl.question('Enter the Task ID to toggle:',(id)=>{
+                    this.controller.toggleStatus(Number(id));
+                    this.display();
+                })
+                break;             
+            case '9':
                 console.log("Exiting... ");
                 this.rl.close();
                 break;

@@ -29,7 +29,7 @@ export const calculateGlobalStats = (users) => {
     }, { totalTasks: 0, totalCompleted: 0 });
 };
 
-export const groupByUser = (tasks)=>{
+export const groupTaskByUser = (tasks)=>{
     const group = new Map();
      
     tasks.forEach(task =>{
@@ -57,3 +57,15 @@ export const filterByStatus = (tasks,status)=>{
     return tasks.filter(t =>t.completed === isCompleted);
 }
 
+export const sortTasksByTitle = (tasks)=>{
+    const copy = [...tasks];
+
+    return copy.sort((a,b)=>{
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        if(titleA < titleB) return -1;
+        if(titleA > titleB ) return 1;
+
+        return 0;
+    })
+}
