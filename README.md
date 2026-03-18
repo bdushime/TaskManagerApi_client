@@ -7,7 +7,7 @@ A professional Command Line Interface (CLI) application designed to fetch, proce
 ##  Core Features
 
 * ** Resilient Data Fetching**: Custom `APIClient` featuring **Recursive Retry Logic** and **Exponential Backoff** to handle network instability.
-* ** Object-Oriented Architecture**:
+* **** Object-Oriented Architectur****:
     * **Inheritance**: Specialized `PriorityTask` extends the base `Task` class.
     * **Polymorphism**: Overridden methods for dynamic, priority-based status reporting.
     * **Encapsulation**: Dedicated `User` models that manage their own statistics and state.
