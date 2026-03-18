@@ -26,7 +26,7 @@ export class TaskController {
   showCategories() {
     console.log(`\n===   UNIQUE TASK CATEGORIES ===`);
     const categories = processor.getUniqueCategories(this.allTasks);
-    console.log(categories.join(" | "));
+    console.log(categories.join(" |||| "));
   }
 
   showUserDashboard(userId) {
@@ -54,7 +54,7 @@ export class TaskController {
       console.log("No tasks found matching that title.");
     } else {
       results.forEach((task) =>
-        console.log(`- [${task.getStatus()}] ${task.title}`),
+        console.log(`- ${task.title} is  [${task.getStatus()}]`),
       );
     }
   }

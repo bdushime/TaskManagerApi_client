@@ -1,3 +1,5 @@
+import readline from 'readline';
+
 /**
  * MenuView: Handles the Command Line Interface (CLI) and user interactions.
  * Features: Uses Node.js 'readline' to capture standard input/output streams.
@@ -5,6 +7,7 @@
  * to the TaskController. Includes a recursive display loop to keep the 
  * application active until the user chooses to exit.
  */
+
 export class MenuView {
     constructor(controller) {
         this.controller = controller;
