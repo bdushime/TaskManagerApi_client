@@ -1,25 +1,28 @@
+#  Task Manager CLI (ES6+)
 
-Task Manager CLI (ES6+)
-A robust, object-oriented Command Line Interface (CLI) application built with modern JavaScript to manage and analyze tasks from a remote API.
+A professional Command Line Interface (CLI) application designed to fetch, process, and manage task data from a remote REST API. Built with a focus on **Clean Code**, **Design Patterns**, and **Resilient Asynchronous Logic**.
 
-Key Features
+---
 
-Resilient API Client: Fetches data from JSONPlaceholder with built-in Retry Logic and Exponential Backoff.
+##  Core Features
 
-Object-Oriented Design: Utilizes Class Inheritance (Task → PriorityTask) and Encapsulation.
+* ** Resilient Data Fetching**: Custom `APIClient` featuring **Recursive Retry Logic** and **Exponential Backoff** to handle network instability.
+* ** Object-Oriented Architecture**:
+    * **Inheritance**: Specialized `PriorityTask` extends the base `Task` class.
+    * **Polymorphism**: Overridden methods for dynamic, priority-based status reporting.
+    * **Encapsulation**: Dedicated `User` models that manage their own statistics and state.
+* ** Data Analysis & Processing**: 
+    * **Global Stats**: System-wide completion metrics calculated using `.reduce()`.
+    * **User Dashboards**: Real-time performance metrics and completion rates per user.
+    * **Smart Grouping**: High-efficiency `Map` structures for $O(1)$ task lookups.
+* ** Interactive Interface**: A menu-driven system using Node.js `readline` for searching, A-Z sorting, and live status toggling.
 
-Data Analysis: Real-time Global Statistics, User Dashboards, and Completion Rate calculations.
+---
 
-Advanced Filtering: Search by title, filter by status, and extract unique categories using Set.
+##  Technical Stack & ES6 Concepts
 
-High-Efficiency Grouping: Uses Map data structures for $O(1)$ task-to-user lookups.
+* **Asynchronous JS**: `Async/Await`, `Promise.all`, and custom `Promise` timers.
+* **Modern Syntax**: Destructuring, Spread Operator (`...`), Arrow Functions, and Template Literals.
+* **Data Structures**: `Map` (for grouping), `Set` (for unique categories), and `Array.flatMap`.
+* **Architecture**: **MVC (Model-View-Controller)** pattern for a clean Separation of Concerns.
 
-Interactive CLI: A recursive menu-driven interface using Node.js readline.
-
-Tech Stack & Concepts
-
-Runtime: Node.js
-
-Language: ES6+ JavaScript
-
-Patterns: Model-View-Controller (MVC), Dependency Injection, Functional Programming (reduce, map, filter).
