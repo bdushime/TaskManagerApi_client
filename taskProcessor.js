@@ -1,3 +1,13 @@
+/**
+ * TaskProcessor: A utility module for data transformation and analysis.
+ * Core Logic: 
+ * - processData: Maps raw JSON into User and Task class instances for OOP structure.
+ * - calculateGlobalStats: Reduces user data to system-wide completion metrics.
+ * - groupTaskByUser: Organizes flat task lists into Map-based buckets by User ID.
+ * - searchTasks: Performs case-insensitive title lookups.
+ * - getUniqueCategories: Uses a Set to extract unique tags from task titles.
+ * - sortTasksByTitle: Implements a non-destructive A-Z alphabetical sort.
+ */
 import { User } from './models.js/User.js';
 import { Task } from './models.js/Task.js';
 
@@ -20,7 +30,6 @@ export const processData = (rawUsers, rawTodos) => {
   return Array.from(usersMap.values());
 };
 
-
 export const calculateGlobalStats = (users) => {
     return users.reduce((acc, user) => {
         acc.totalTasks += user.tasks.length;
@@ -42,8 +51,8 @@ export const groupTaskByUser = (tasks)=>{
     return group;
 }
 
-export const searchTasks = (tasks,search)=>{
- return tasks.filter(t=>t.title.toLowerCase().includes(search.toLowerCase()));
+export const searchTasks = (tasks, search)=>{
+ return tasks.filter(t => t.title.toLowerCase().includes(search.toLowerCase()));
 }
 
 export const getUniqueCategories = (tasks) => {
@@ -52,9 +61,9 @@ export const getUniqueCategories = (tasks) => {
     return Array.from(uniqueSet);
 };
 
-export const filterByStatus = (tasks,status)=>{
+export const filterByStatus = (tasks, status)=>{
     const isCompleted = status === 'completed';
-    return tasks.filter(t =>t.completed === isCompleted);
+    return tasks.filter(t => t.completed === isCompleted);
 }
 
 export const sortTasksByTitle = (tasks)=>{

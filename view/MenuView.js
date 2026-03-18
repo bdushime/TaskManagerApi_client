@@ -1,5 +1,10 @@
-import readline from 'readline';
-
+/**
+ * MenuView: Handles the Command Line Interface (CLI) and user interactions.
+ * Features: Uses Node.js 'readline' to capture standard input/output streams.
+ * It displays a numbered menu, captures user choices, and delegates actions 
+ * to the TaskController. Includes a recursive display loop to keep the 
+ * application active until the user chooses to exit.
+ */
 export class MenuView {
     constructor(controller) {
         this.controller = controller;
@@ -12,7 +17,7 @@ export class MenuView {
     display() {
         console.log(`
         =============================
-           TASK MANAGER CLI MENU
+            TASK MANAGER CLI MENU
         =============================
         1. View Global Statistics
         2. Search Tasks by Title
@@ -55,23 +60,22 @@ export class MenuView {
                 break;
             case '5':
                 this.rl.question('Enter User ID: ', (id) => {
-                    this.rl.question('Filter by completed or pending :',(status)=>{
-                        this.controller.showUserTasksByStatus(Number(id),status.toLowerCase());
+                    this.rl.question('Filter by completed or pending :', (status) => {
+                        this.controller.showUserTasksByStatus(Number(id), status.toLowerCase());
                         this.display();
                     })
-                  
                 });
                 break;
-              case '6':
+            case '6':
                  this.controller.showSortedTasks(true);
                  this.display();
                 break;
-              case '7':
+            case '7':
                  this.controller.showUserTaskDistributin();
                  this.display();
                 break;
-              case '8':
-                this.rl.question('Enter the Task ID to toggle:',(id)=>{
+            case '8':
+                this.rl.question('Enter the Task ID to toggle:', (id) => {
                     this.controller.toggleStatus(Number(id));
                     this.display();
                 })
